@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello World!</p>
+    <script type="text/javascript" src="http://cors-fun2-fh2.s3-website.us-west-2.amazonaws.com/hello.js">
+        const xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://InsertInvokeIDHere.execute-api.us-west-2.amazonaws.com/prod/hello", true);
+
+            // Send the proper header information along with the request
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = () => {
+                // Call a function when the state changes.
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var results = JSON.parse(xhr.responseText);
+                    console.log('results',results)
+                    // Request finished. Do processing here.
+                }
+            };
+            xhr.send();
+            // xhr.send(new Int8Array());
+            // xhr.send(document);
+
+    </script>
+
+</body>
+</html>
